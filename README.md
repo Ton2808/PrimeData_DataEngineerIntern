@@ -132,7 +132,7 @@ The overall complexity is ```O(N)``` which is acceptable because ```N = 1000```,
 
 ---
 #### Solution 2
-Instead of maintain a 1D sorted array, we will maintain a min-heap.
+Instead of maintain a 1D sorted array, we will maintain a min-heap. When there is a new website, if the min-heap size is less than ```1000``` than we will insert the new website, else we will compare the ```sc``` score of the new website with the top element of the min-heap, if the ```sc``` score of the new website is greater, we will pop the top element than insert the new website, else we just ignore the new website.
 
 ##### Pro
 The overall complexity is ```O(log(N))```, harder to implement by hand but almost every language has a library that support pre-built heap. For example the ```STL``` library in ```C++```.
@@ -143,3 +143,9 @@ We can only access the min element, to access random element ```i``` we need to 
 ### Q8
 
 ---
+### Q9
+
+---
+### Q10
+
+
