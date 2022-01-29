@@ -51,9 +51,7 @@ We have the lemma
 ```0 + 1 + 2 + ... + n = n * (n + 1) / 2```
 
 
-We also know that there is only one missing element from 0 to n, so if we take
-
-```n * (n + 1) / 2``` and subtract it with the sum of all the appeared  elements we will get the missing value.
+We also know that there is only one missing element from 0 to n, so if we take ```n * (n + 1) / 2``` and subtract it with the sum of all the appeared  elements we will get the missing value.
 
 ```
 long long sum = 0;
