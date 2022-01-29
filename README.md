@@ -3,7 +3,7 @@ The detail of all the file related to the question are in the folder of that que
 
 ---
 ### Q1
-In this question we want to find the second highest score of athletes, firstly I try to use the ``` MAX``` statement but it only return the maximum score, so I think of the approve using the ``` WHERE``` statement to put in the condition that take the  highest score that is smaller than the maximum score. 
+In this question we want to find the second highest score of athletes, firstly I try to use the ``` MAX``` statement but it only return the maximum score, so I think of the approve using the ``` WHERE``` statement to put in the condition that take the  highest score that is smaller than the maximum score.
 ```
 SELECT MAX(Score) as second_highest_score
 FROM Performance
@@ -46,24 +46,25 @@ WHERE rk <= 3
 ```
 ---
 ### Q4
-We can see there are ```n + 1``` numbers from ```0``` to ```n``` so we can create an 1D bool array ```cnt[i]``` of size ```n + 1``` to mark that the ```i``` value has appeared, when ever a new element appear we will mark ```cnt[i] = true```.
+We have the lemma
+
+```0 + 1 + 2 + ... + n = n * (n + 1) / 2```
+
+
+We also know that there is only one missing element from 0 to n, so if we take
+
+```n * (n + 1) / 2``` and subtract it with the sum of all the appeared  elements we will get the missing value.
 
 ```
-for(int i = 1 ; i <= n ; i++) {
-    int val;
+long long sum = 0;
+for(int i = 1 ; i <= n ; i++)
+{
+    long long val;
     cin >> val;
-    cnt[val] = true; // mark that this value has appeared
+    sum += val;
 }
-```
+cout << "The missing number is: " << n * (n + 1) / 2 - sum << endl;
 
-Finally we will loop ```i``` from ```0``` to ```n``` if ```cnt[i] == false```  it mean that ```i``` is the missing element, so we will print ```i``` to the result.
-
-```
-for(int i = 0 ; i <= n ; i++)
-    if(!cnt[i]){
-        cout << "The missing number is " << i << endl;;
-        break;
-    }
 ```
 ---
 ### Q5
@@ -137,7 +138,7 @@ Instead of maintain a 1D sorted array, we will maintain a min-heap. When there i
 ##### Pro
 The overall complexity is ```O(log(N))```, harder to implement by hand but almost every language has a library that support pre-built heap. For example the ```STL``` library in ```C++```.
 ##### Con
-We can only access the min element, to access random element ```i``` we need to pop all element of the current heap and maintain all the pop element in another heap. The complexity of random access is ```O(Nlog(N))```.
+We can only access the min element, to access random element ```i``` we need to pop all element of the current heap and maintain all the pop element in another heap. The complexity of random access is ```O(Nlog(N))```
 
 ---
 ### Q8
@@ -147,5 +148,3 @@ We can only access the min element, to access random element ```i``` we need to 
 
 ---
 ### Q10
-
-
