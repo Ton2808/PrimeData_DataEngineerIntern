@@ -1,33 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5 + 5;
-int n;
-bool cnt[N];
+long long n;
 
-void input()
+int main()
 {
     cout << "Enter the size of the array: ";
     cin >> n;
     cout << "Enter " << n << " elements of the array: " << endl;
-    for(int i = 1 ; i <= n ; i++) {
-        int val;
+    long long sum = 0;
+    for(int i = 1 ; i <= n ; i++)
+    {
+        long long val;
         cin >> val;
-        cnt[val] = true; // mark that this value has appeared
+        sum += val;
     }
-}
-
-void solve()
-{
-    for(int i = 0 ; i <= n ; i++)
-        if(!cnt[i]){
-            cout << "The missing number is " << i << endl;;
-            break;
-        }
-}
-
-int main()
-{
-    input();
-    solve();
+    cout << "The missing number is: " << n * (n + 1) / 2 - sum << endl;
 }
