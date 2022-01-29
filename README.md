@@ -122,6 +122,7 @@ void delDup(Node *&head)
 ### Q7
 First we need to design a score to measure how sensitive is a website, let call that ```sc```, the ```sc``` score is depending on many different scenario like if the company care about the product may be out of date, we can set something like ```sc = how many day the product expired```. Let assume that we already calculate ```sc``` now let create a solution to maintain this list of websites.
 
+---
 #### Solution 1
 We will maintain an 1D sorted array ```arr``` of size ```1000``` in decreasing order of the ```sc``` score,  when there is a new website we will calculate the ```sc``` and loop throw the ```arr``` to find the position ```pos``` of the first website that is less sensitive then the current website, than insert the current website to the ```pos``` position to extend the list of website. If it get over ```1000``` website than delete the last website of the array ```arr``` or if ```pos``` is not exist than we ignore the new website.
 ##### Pro
@@ -129,6 +130,7 @@ Easy to implement.
 ##### Con
 The overall complexity is ```O(N)``` which is acceptable because ```N = 1000```, but is not fast enough to handle bigger ```N```.
 
+---
 #### Solution 2
 Instead of maintain a 1D sorted array, we will maintain a min-heap.
 
