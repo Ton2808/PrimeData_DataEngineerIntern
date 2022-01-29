@@ -45,4 +45,3 @@ SELECT *
 FROM Customers C
 WHERE C.id not in (SELECT O.customerId FROM Orders O);
 
-SELECT * FROM Customers;
