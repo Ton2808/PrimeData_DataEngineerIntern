@@ -162,7 +162,7 @@ cout << "The naive solution result: " << res << "/" << 6 * 6 * 6  << "=" << (dou
 ```
 The optimize solution is to use **dynamic programming** to improve to ```O(N)```.
 
-Let ```f[i][j]``` is the number of way to make the ```j``` dice score ```i``` point. Because the next dice could be from 1 -> 6 so  
+Let ```f[i][j]``` is the number of way to make the ```j``` dice score ```i``` point. Because the next dice could be from ```1 -> 6``` so  
 
 ```f[i][j] = f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[i - 6][j - 1]```
 
