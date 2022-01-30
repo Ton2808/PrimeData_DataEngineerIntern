@@ -1,6 +1,6 @@
 The detail of all the file related to the question are in the folder of that question, below is the detail explanation for each question.
 ---
-
+### Note: Look in Q4 in the pdf file we see that the array start from 1 -> n. So Q4,Q5,Q6 I will assume that the array start from 1 -> n not 0 -> n - 1. To run Q6 you need to change input.txt as the linked list head.
 ---
 ### Q1
 In this question we want to find the second highest score of athletes, firstly I try to use the ``` MAX``` statement but it only return the maximum score, so I think of the approve using the ``` WHERE``` statement to put in the condition that take the  highest score that is smaller than the maximum score.
@@ -34,7 +34,7 @@ SELECT DISTINCT
 FROM (
 SELECT
     d.Name as department,
-	e.id as employeeId,
+    e.id as employeeId,
     e.Name as employeeName,
     e.salary as salary,
     DENSE_RANK() OVER (PARTITION BY d.Name ORDER BY e.salary DESC) as rk
@@ -51,7 +51,7 @@ We have the lemma
 ```0 + 1 + 2 + ... + n = n * (n + 1) / 2```
 
 
-We also know that there is only one missing element from 0 to n, so if we take ```n * (n + 1) / 2``` and subtract it with the sum of all the appeared  elements we will get the missing value.
+We also know that there is only one missing element from ```0``` to ```n```, so if we take ```n * (n + 1) / 2``` and subtract it with the sum of all the appeared  elements we will get the missing value.
 
 ```
 long long sum = 0;
@@ -78,7 +78,7 @@ for(int i = 1 , j = 1 ; i <= m || j <= n ; i++){
 }
 ```
 
-After having a merge sorted array, the only thing left is to take care of the case the ```sz``` of the array is odd or even .
+After having a merge sorted array, the only thing left is to take care of the case the size ```sz``` of the array is odd or even .
 ```
 int sz = n + m;
 if(sz % 2 == 0)
@@ -127,7 +127,7 @@ We will maintain an 1D sorted array ```arr``` of size ```1000``` in decreasing o
 ##### Pro
 Easy to implement.
 ##### Con
-The overall complexity is ```O(N)``` which is acceptable because ```N = 1000```, but is not fast enough to handle bigger ```N```.
+The overall complexity is ```O(N)``` which is acceptable because ```N = 1000```, but it is not fast enough to handle bigger ```N```.
 
 ---
 #### Solution 2
@@ -160,18 +160,19 @@ for(int x = 1 ; x <= 6 ; x++) // first dice
                 res += 1;
 cout << "The naive solution result: " << res << "/" << 6 * 6 * 6  << "=" << (double)res / (6 * 6 * 6) << endl;
 ```
-The optimize solution is to use **dynamic programming** to improve to ```O(N)```, Let define
+The optimize solution is to use **dynamic programming** to improve to ```O(N)```.
 
-1) ```f[i][j]``` is the number of way to make the ```j``` dice score ```i``` point. Because the next dice could be from 1 -> 6 so 
+Let ```f[i][j]``` is the number of way to make the ```j``` dice score ```i``` point. Because the next dice could be from 1 -> 6 so  
 
 ```f[i][j] = f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[i - 6][j - 1]```
-'''
 
-2) ```prefixSum[i][j]``` is the number of way to make ```j``` dice score from ```[0,i]``` point
+Let ```prefixSum[i][j]``` is the number of way to make ```j``` dice score from ```[0,i]``` point
 
 ``` prefixSum[i][j] = f[1][j] + f[2][j] + ... + f[i][j] = prefixSum[i - 1][j] + f[i][j]```
 
-3) ``` f[i][j] = f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[i - 6][j - 1]```
+We have
+
+``` f[i][j] = f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[i - 6][j - 1]```
 
 ```= (f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[1][j - 1]) - (f[i - 7][j - 1] + f[i - 8][j - 1] + ... + f[1][j - 1])```
 
