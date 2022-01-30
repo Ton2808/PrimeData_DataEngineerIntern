@@ -202,7 +202,7 @@ cout << "The optimize result: " << res << "/" << 6 * 6 * 6  << "="  << (double)r
 ```
 
    
-The result is: 20 / 216 = 0.0925926
+**The result is:** ```20 / 216 = 0.0925926```
 
 ---
 ### Q10
