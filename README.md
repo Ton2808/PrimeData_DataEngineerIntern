@@ -140,9 +140,74 @@ We can only access the min element, to access random element ```i``` we need to 
 
 ---
 ### Q8
+Although the exam score could have a lot of decimal, but the different between ```7.000``` and ```7.001``` is not much a different, so we could group them together into an interval plus we want to show the chart to the public so the chart must be easy to understand. That why I think the histogram graph is the best graph for this scenario.
+
+Example
+
+![englishScore](Q8/englishScore.png)
+
 
 ---
 ### Q9
+We could use a naive solution like try every value from ```1 -> 6``` for all three dices than take all the cases that satisfy the sum of the first dice is greater than the two remaining dices. The complexity is ```O(N^3)``` with ```N = 6```
+
+```
+int res = 0;
+for(int x = 1 ; x <= 6 ; x++) // first dice
+    for(int y = 1 ; y <= 6 ; y++) // second dice
+        for(int z = 1 ; z <= 6 ; z++) // third dice
+            if(x > y + z) // if first dice greater than the sum of the remaining dice
+                res += 1;
+cout << "The naive solution result: " << res << "/" << 6 * 6 * 6  << "=" << (double)res / (6 * 6 * 6) << endl;
+```
+The optimize solution is to use **dynamic programming** to improve to ```O(N)```, Let define
+
+1) ```f[i][j]``` is the number of way to make the ```j``` dice score ```i``` point. Because the next dice could be from 1 -> 6 so 
+
+```f[i][j] = f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[i - 6][j - 1]```
+'''
+
+2) ```prefixSum[i][j]``` is the number of way to make ```j``` dice score from ```[0,i]``` point
+
+``` prefixSum[i][j] = f[1][j] + f[2][j] + ... + f[i][j] = prefixSum[i - 1][j] + f[i][j]```
+
+3) ``` f[i][j] = f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[i - 6][j - 1]```
+
+```= (f[i - 1][j - 1] + f[i - 2][j - 1] + ... + f[1][j - 1]) - (f[i - 7][j - 1] + f[i - 8][j - 1] + ... + f[1][j - 1])```
+
+```= prefixSum[i - 1][j - 1] - prefixSum[i - 7][j - 1] ```
+
+```
+f[0][0] = 1; // 0 dice so 0 score
+prefixSum[0][0] = 1;
+for(int i = 1 ; i <= 6 ; i++)
+     prefixSum[i][0] = prefixSum[i - 1][0] + f[i][0];
+
+for(int j = 1 ; j <= 2 ; j++){
+    for(int i = 1 ; i <= 6 ; i++){
+        f[i][j] = prefixSum[i - 1][j - 1];
+        if(i >= 7)
+            f[i][j] -= prefixSum[i - 7][j - 1];
+        prefixSum[i][j] = prefixSum[i - 1][j] + f[i][j];
+    }
+}
+
+// calculate the result
+int res = 0;
+for(int i = 1 ; i <= 6 ; i++)
+    res += prefixSum[i - 1][2]; // result plus the number of way to make two dice score point greater than i
+
+cout << "The optimize result: " << res << "/" << 6 * 6 * 6  << "="  << (double)res / (6 * 6 * 6) << endl;
+```
+
+   
+The result is: 20 / 216 = 0.0925926
 
 ---
 ### Q10
+![dashboard1](Q10/dashboard1.png)
+
+The New York City subway in **April 2011** had record **42649** subway ride with **240** different units across **207** station. Most of the rides start when the weather condition is **clear**, **overcast** or **mostly cloudy**. About **77,5%** of the ride start when there **no rain** and **99%** when there is **no fog**. 
+
+![dashboard2](Q10/dashboard2.png)
+The interesting thing I found is that only the **south east station** of the New York City had subway ride when the condition is **fog** or **mist**, my hypothesis is because of the **rolling topography** and **varying climate** make it particularly prone to **fog** and **mist**.
