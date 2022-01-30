@@ -208,7 +208,7 @@ cout << "The optimize result: " << res << "/" << 6 * 6 * 6  << "="  << (double)r
 ### Q10
 ![dashboard1](Q10/dashboard1.png)
 
-The New York City subway in **April 2011** had record **42649** subway ride with **240** different units across **207** station. Most of the rides start when the weather condition is **clear**, **overcast** or **mostly cloudy**. About **77,5%** of the ride start when there **no rain** and **99%** when there is **no fog**. 
+The New York City subway in **April 2011** had record **42649** subway train with **240** different units across **207** station. Most of the train start when the weather condition is **clear**, **overcast** or **mostly cloudy**. About **77,5%** of the train start when there **no rain** and **99%** when there is **no fog**. 
 
 ![dashboard2](Q10/dashboard2.png)
-The interesting thing I found is that only the **south east station** of the New York City had subway ride when the condition is **fog** or **mist**, my hypothesis is because of the **rolling topography** and **varying climate** make it particularly prone to **fog** and **mist**.
+The interesting thing I found is that only the **south east station** of the New York City had subway train when the condition is **fog** or **mist**, my hypothesis is because of the **rolling topography** and **varying climate** make it particularly prone to **fog** and **mist**.
